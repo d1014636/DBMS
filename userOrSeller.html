@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁 | 拾捌</title>
+    <link rel="stylesheet" href="css/init.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="shortcut icon" href="media/icon-circle.png" type="image/png">
+    <style>
+        body {
+            padding-top: calc(60px + 4vh);
+            padding-bottom: 5vh;
+        }
+
+        #products {
+            margin: 0 auto;
+            width: 80vw;
+            display: flex;
+            align-items: stretch;
+            flex-wrap: wrap;
+        }
+
+        #products>div {
+            width: 300px;
+            background-color: #fff;
+            padding-bottom: 2vh;
+            margin: 10px;
+        }
+
+        #products .img-cover {
+            height: 300px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        #products>div:hover .img-cover>img {
+            transform: scale(1.1, 1.1);
+        }
+
+        #products .img-cover>img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform-origin: center;
+            transition: transform 0.5s;
+        }
+
+        .info {
+            position: relative;
+            width: 90%;
+            height: 10vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            margin: 10px auto 0 auto;
+        }
+
+        .seller {
+            position: relative;
+            color: rgb(143, 143, 143);
+        }
+
+        .seller::after {
+            content: '';
+            width: 100%;
+            height: 1px;
+            background-color: var(--main-deep-color);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .title {
+            font-weight: 900;
+            padding-top: 0.2vh;
+            font-size: 1.2em;
+            color: #000;
+        }
+
+        .price {
+            color: var(--secondary-color);
+            font-weight: 700;
+            padding-top: 1vh;
+            text-align: end;
+        }
+
+
+        #info {
+            margin: 0 auto 5vh auto;
+            width: 86vw;
+            border-bottom: #8b8b8b 1px solid;
+            padding-bottom: 2vh;
+        }
+
+        #info>div {
+            width: 300px;
+            display: flex;
+            padding: 2vh 3vw;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        #info h2 {
+            margin-top: 1vh;
+        }
+
+        #info img {
+            width: 100px;
+            max-width: 80vw;
+            border-radius: 100%;
+        }
+
+        #seller_info {
+            margin-left: 3vw;
+        }
+
+
+        @media (max-width:600px) {
+            #products {
+                justify-content: center;
+            }
+
+            #products>div {
+                width: 80vw;
+            }
+
+            #info>div {
+                justify-content: space-evenly;
+            }
+
+            #seller_info {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="/" class="index">
+            <img src="media/icon.png" alt="">
+        </a>
+        <div class="nav-menu">
+            <form action="/index.html" class="search">
+                <input type="text" id="search" name="search">
+                <input type="submit" id="submit">
+                <label for="submit"><img src="./media/magnifying-glass.png" alt=""></label>
+            </form>
+            <a href="/login.html">
+                <img class="user-img" src="https://static.shoplineapp.com/web/assets/misc/product-review-default-avatar.svg" alt="">
+                <span>登入</span>
+            </a>
+        </div>
+    </nav>
+
+    <div id="info">
+        <div>
+            <img src="https://static.shoplineapp.com/web/assets/misc/product-review-default-avatar.svg" alt="">
+            <div id="seller_info">
+                <h2>賣家</h2>
+                <h4>商品 : 1</h4>
+            </div>
+        </div>
+    </div>
+    <div id="products">
+        <div>
+            <a href="./product.html">
+                <div class="img-cover">
+                    <img src="https://picsum.photos/1000/800?random=1" alt="">
+                </div>
+                <div class="info">
+                    <div class="seller">賣家1</div>
+                    <div class="title">商品1</div>
+                    <div class="price">NT$1000</div>
+                </div>
+            </a>
+        </div>
+        <!-- <div>
+            <a href="./product.html">
+                <div class="img-cover">
+                    <img src="https://picsum.photos/1000/500?random=2" alt="">
+                </div>
+                <div class="info">
+                    <div class="seller">賣家2</div>
+                    <div class="title">商品2</div>
+                    <div class="price">NT$1000</div>
+                </div>
+            </a>
+        </div>
+        <div>
+            <a href="./product.html">
+                <div class="img-cover">
+                    <img src="https://picsum.photos/1000/600?random=3" alt="">
+                </div>
+                <div class="info">
+                    <div class="seller">賣家3</div>
+                    <div class="title">商品3</div>
+                    <div class="price">NT$1000</div>
+                </div>
+            </a>
+        </div>
+        <div>
+            <a href="./product.html">
+                <div class="img-cover">
+                    <img src="https://picsum.photos/1000/2000?random=4" alt="">
+                </div>
+                <div class="info">
+                    <div class="seller">賣家4</div>
+                    <div class="title">商品4</div>
+                    <div class="price">NT$1000</div>
+                </div>
+            </a>
+        </div>
+        <div>
+            <a href="./product.html">
+                <div class="img-cover">
+                    <img src="https://picsum.photos/1000/2000?random=5" alt="">
+                </div>
+                <div class="info">
+                    <div class="seller">賣家5</div>
+                    <div class="title">商品5</div>
+                    <div class="price">NT$1000</div>
+                </div>
+            </a>
+        </div>
+        <div>
+            <a href="./product.html">
+                <div class="img-cover">
+                    <img src="https://picsum.photos/1000/2000?random=6" alt="">
+                </div>
+                <div class="info">
+                    <div class="seller">賣家6</div>
+                    <div class="title">商品6</div>
+                    <div class="price">NT$1000</div>
+                </div>
+            </a>
+        </div>
+        <div>
+            <a href="./product.html">
+                <div class="img-cover">
+                    <img src="https://picsum.photos/1000/2000?random=7" alt="">
+                </div>
+                <div class="info">
+                    <div class="seller">賣家7</div>
+                    <div class="title">商品7</div>
+                    <div class="price">NT$1000</div>
+                </div>
+            </a>
+        </div> -->
+    </div>
+</body>
+
+</html>

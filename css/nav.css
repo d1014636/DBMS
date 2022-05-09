@@ -1,0 +1,128 @@
+nav {
+    width: 90vw;
+    display: flex;
+    justify-content: space-between;
+    padding: 2vh 5vw;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    /* mix-blend-mode: difference; */
+    filter: drop-shadow(0 7px 8px #00000010);
+}
+
+.index {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.index>img {
+    filter: invert(0.6);
+    -webkit-filter: invert(0.6);
+}
+
+nav img {
+    height: 100%;
+}
+
+nav img.user-img {
+    border-radius: 100%;
+    border: 1px solid rgb(141, 141, 141);
+}
+
+nav>a {
+    height: 26px;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 100%;
+}
+
+.nav-menu>a>span {
+    margin-left: 10px;
+}
+
+.nav-menu>a {
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: #000;
+}
+
+.nav-menu .search {
+    margin-right: 3vw;
+    display: flex;
+}
+
+.nav-menu .search #search {
+    width: calc(100% - 40px);
+    outline: none;
+    border-radius: 5px 0 0 5px;
+    height: 1.2em;
+    line-height: 1.2em;
+    padding: 5px 10px;
+    border: none;
+}
+
+.nav-menu .search #submit {
+    display: none;
+}
+
+.nav-menu .search #submit+label {
+    border-radius: 0 5px 5px 0;
+    padding: 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.nav-menu .search #submit+label,
+.nav-menu .search #search {
+    background-color: #fff;
+}
+
+.nav-menu .search #submit+label>img {
+    height: 1.2em;
+}
+
+@media (max-width:600px) {
+    body {
+        padding-top: calc(46px + 4vh);
+    }
+
+    .image-line {
+        padding-top: 0;
+    }
+
+    .nav-menu {
+        position: fixed;
+        justify-content: flex-start;
+        top: 0;
+        left: 0;
+        background-color: var(--secondary-color);
+        padding: 10vh 0;
+        height: 80vh;
+        width: 100vw;
+        flex-direction: column;
+    }
+
+    .nav-menu>* {
+        margin: 2vh 0;
+    }
+
+    .nav-menu .search {
+        width: 80vw;
+    }
+
+    .nav-menu>a {
+        color: #fff;
+        justify-content: space-evenly;
+    }
+}

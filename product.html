@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>衣服 | 拾捌</title>
+    <link rel="stylesheet" href="css/init.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="shortcut icon" href="media/icon-circle.png" type="image/png">
+    <style>
+        body {
+            padding-bottom: 5vh;
+        }
+
+        #img_over {
+            display: none;
+            opacity: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--secondary-transparent-color);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 101;
+            transition: all 0.5s ease;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+
+        #img_over>img {
+            box-shadow: 0 0 50px #00000090;
+        }
+
+        .top {
+            display: flex;
+        }
+
+        .image-line {
+            width: 50vw;
+            display: flex;
+            flex-direction: column;
+            padding-top: calc(50px + 4vh);
+        }
+
+        .image-line>img {
+            width: 40vw;
+            margin-bottom: 3vh;
+            margin-right: auto;
+            margin-left: auto;
+            cursor: zoom-in;
+        }
+
+        .info {
+            position: sticky;
+            top: 0;
+            width: 50vw;
+            height: 100vh;
+        }
+
+        .info>div {
+            background-color: var(--secondary-color);
+            height: 100%;
+            width: 36vw;
+            margin: 0 auto;
+        }
+
+        .seller {
+            font: 13px Graphik, sans-serif;
+            color: #929292;
+        }
+
+        .name {
+            margin: 0;
+            font-family: Cormorant Garamond, serif;
+            font-weight: 400;
+            margin-top: 8px;
+            /* color: #000; */
+            color: #fff;
+        }
+
+        .info-inner {
+            padding: 200px 100px;
+        }
+
+        .price {
+            font: 700 14px/1.6 Graphik, sans-serif;
+            margin-top: 8px;
+            font-size: 25px;
+            color: var(--accent-color);
+        }
+
+        .excerpt {
+            font: 400 14px/1.6 Graphik, sans-serif;
+            margin-top: 28px;
+            /* color: #000; */
+            color: #fff;
+        }
+
+        .more-information {
+            font: 13px/1.25 Graphik, sans-serif;
+            margin-top: 16px;
+            position: relative;
+            display: inline-block;
+            /* color: #000; */
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .more-information:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0px;
+            width: 100%;
+            height: 1px;
+            background: currentColor;
+            transform: scaleX(1);
+            opacity: .6;
+            transform-origin: left;
+            transition: transform .7s cubic-bezier(.19, 1, .22, 1) .2s;
+        }
+
+        .more-information:hover:after {
+            transform: scaleX(0);
+            transform-origin: right;
+            transition-delay: 0s;
+        }
+
+        #more_info,
+        #review_comments {
+            margin-top: 105px;
+            width: 60vw;
+            margin-right: auto;
+            margin-left: auto;
+            /* background-color: #fff; */
+            background-color: var(--main-color);
+            /* color: #fff; */
+            padding: 10vh 10vw;
+        }
+
+        .li,
+        .user {
+            display: flex;
+        }
+
+        .li {
+            margin-bottom: 3vh;
+        }
+
+        .li:last-child {
+            margin-bottom: 0;
+        }
+
+        .comment,
+        .user {
+            width: 50%;
+        }
+
+        .star {
+            width: 18px;
+        }
+
+        .comment {
+            font-size: 14px;
+            color: rgb(125, 125, 125);
+        }
+
+        #review_summary {
+            display: flex;
+            width: 60%;
+            margin: 0 auto 4vh auto;
+        }
+
+        .review-summary-group {
+            width: 80%;
+        }
+
+        .review-summary-text-group {
+            width: 20%;
+            text-align: center;
+        }
+
+        .review-summary-bar {
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .review-summary-bar-line {
+            width: 90%;
+            height: 14px;
+            border-radius: 14px;
+            background-color: rgb(216, 216, 216);
+        }
+
+        .review-summary-bar-line>div {
+            width: 100%;
+            height: 100%;
+            background-color: #ffcc00;
+            border-radius: 14px;
+        }
+
+        .review-summary-point {
+            font-size: 66px;
+            color: var(--accent-color);
+        }
+
+        @media (max-width:600px) {
+            .top {
+                flex-direction: column;
+            }
+
+            .image-line {
+                padding-top: 3vh;
+                width: 100vw;
+            }
+
+            .image-line>img {
+                width: 100%;
+                margin: 0;
+            }
+
+            .info {
+                width: 100%;
+                height: auto;
+            }
+
+            .info>div {
+                width: 100vw;
+            }
+
+            .info-inner {
+                padding: 5vh 17vw;
+                width: 66vw;
+            }
+
+            #more_info {
+                width: 66vw;
+            }
+
+            #review_summary {
+                margin: 0;
+                width: 100%;
+                margin-bottom: 5vh;
+            }
+
+            #more_info,
+            #review_comments,
+            .info-inner {
+                margin-top: 3vh;
+            }
+
+            #review_comments {
+                width: calc(86vw - 60px);
+                padding: 80px 30px;
+            }
+
+            .review-summary-bar {
+                font-size: 10px;
+            }
+
+            .review-summary-text-group {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .review-summary-point {
+                font-size: 30px;
+            }
+
+            .review-summary-count {
+                font-size: 10px;
+            }
+
+            .review-summary-bar-line {
+                height: 10px;
+            }
+
+            .excerpt,
+            .more-information {
+                display: none;
+            }
+
+            .li {
+                justify-content: space-around
+            }
+
+            .comment,
+            .user {
+                width: auto;
+            }
+
+            .user {
+                margin-right: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="/" class="index">
+            <img src="media/icon.png" alt="">
+        </a>
+        <div class="nav-menu">
+            <form action="/index.html" class="search">
+                <input type="text" id="search" name="search">
+                <input type="submit" id="submit">
+                <label for="submit"><img src="./media/magnifying-glass.png" alt=""></label>
+            </form>
+            <a href="/login.html">
+                <img class="user-img" src="https://static.shoplineapp.com/web/assets/misc/product-review-default-avatar.svg" alt="">
+                <span>登入</span>
+            </a>
+        </div>
+    </nav>
+
+    <div id="img_over">
+        <img src="" alt="">
+    </div>
+
+    <div>
+        <div class="top">
+            <div class="image-line">
+                <img src="https://picsum.photos/1000/500?random=1" alt="">
+                <img src="https://picsum.photos/1000/800?random=2" alt="">
+                <img src="https://picsum.photos/1000/600?random=3" alt="">
+                <img src="https://picsum.photos/1000/500?random=4" alt="">
+                <img src="https://picsum.photos/1000/800?random=5" alt="">
+            </div>
+            <div class="info">
+                <div>
+                    <div class="info-inner">
+                        <a href="" class="seller">Natural rubber outsoles</a>
+                        <h1 class="name">衣服</h1>
+                        <span class="price">NT$1000</span>
+                        <p class="excerpt">
+                            The style that started it all. Never changed, but constantly improved. A modern reinterpretation of a classic tennis sneaker. This rendition is made from premium ...
+                        </p>
+                        <a class="more-information" href="#more_info">More information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="more_info">
+            The style that started it all. Never changed, but constantly improved. A modern reinterpretation of a classic tennis sneaker. This rendition is made from premium butter-soft suede. Instead of splitting the leather into three parts, we keep it in a thick, single layer. This enables us to use the entire leather hide, skipping the need to make a lining and delivering maximum comfort. A simple luxury.
+        </div>
+        <div id="review_comments">
+            <div id="review_summary">
+                <div class="review-summary-group">
+                    <div class="review-summary-bar">
+                        <div>5</div>
+                        <div class="review-summary-bar-line">
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="review-summary-bar">
+                        <div>4</div>
+                        <div class="review-summary-bar-line">
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="review-summary-bar">
+                        <div>3</div>
+                        <div class="review-summary-bar-line">
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="review-summary-bar">
+                        <div>2</div>
+                        <div class="review-summary-bar-line">
+                            <div style="transform: scaleX(0);"></div>
+                        </div>
+                    </div>
+                    <div class="review-summary-bar">
+                        <div>1</div>
+                        <div class="review-summary-bar-line">
+                            <div style="transform: scaleX(0);"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-summary-text-group">
+                    <div class="review-summary-point">4.0</div>
+                    <div class="review-summary-count">三則評論</div>
+                </div>
+            </div>
+            <div class="li">
+                <div class="user">
+                    <img class="user-img" src="https://static.shoplineapp.com/web/assets/misc/product-review-default-avatar.svg" alt="">
+                    <div>
+                        <div>G****y</div>
+                        <div>March 18, 2022</div>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div>
+                        <img class="star" src="media/star-full.svg" alt="">
+                        <img class="star" src="media/star-full.svg" alt="">
+                        <img class="star" src="media/star-full.svg" alt="">
+                        <img class="star" src="media/star-full.svg" alt="">
+                        <img class="star" src="media/star-full.svg" alt="">
+                    </div>
+                    <div>滿意 衣服很舒服</div>
+                </div>
+            </div>
+
+            <div class="li">
+                <div class="user">
+                    <img class="user-img" src="https://static.shoplineapp.com/web/assets/misc/product-review-default-avatar.svg" alt="">
+                    <div>
+                        <div>G****y</div>
+                        <div>March 18, 2022</div>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div>
+                        <img class="star" src="media/star-full.svg" alt="">
+                        <img class="star" src="media/star-full.svg" alt="">
+                        <img class="star" src="media/star-full.svg" alt="">
+                        <img class="star" src="media/star-full.svg" alt="">
+                        <img class="star" src="media/star-empty.svg" alt="">
+                    </div>
+                    <div>滿意 衣服很舒服</div>
+                </div>
+            </div>
+
+            <div class="li">
+                <div class="user">
+                    <img class="user-img" src="https://static.shoplineapp.com/web/assets/misc/product-review-default-avatar.svg" alt="">
+                    <div>
+                        <div>G****y</div>
+                        <div>March 18, 2022</div>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div>
+                        <img class="star" src="media/star-full.svg" alt="">
+                        <img class="star" src="media/star-full.svg" alt="">
+                        <img class="star" src="media/star-full.svg" alt="">
+                        <img class="star" src="media/star-empty.svg" alt="">
+                        <img class="star" src="media/star-empty.svg" alt="">
+                    </div>
+                    <div>滿意 衣服很舒服</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var isOverOpen = false;
+        document.querySelectorAll('.image-line img').forEach(img => {
+            img.addEventListener('click', function() {
+                isOverOpen = true;
+                var img_over = document.querySelector('#img_over>img');
+                if (window.innerWidth / this.width > window.innerHeight / this.height) {
+                    img_over.style.height = '95vh';
+                    img_over.style.width = 'auto';
+                } else {
+                    img_over.style.width = '95vw';
+                    img_over.style.height = 'auto';
+                }
+                img_over.src = this.src;
+                document.getElementById('img_over').style.display = 'flex';
+                setTimeout(() => {
+                    document.getElementById('img_over').style.opacity = '1';
+                }, 10);
+            })
+        })
+        document.getElementById('img_over').addEventListener('click', () => {
+            if (isOverOpen) {
+                document.getElementById('img_over').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('img_over').style.display = 'none';
+                    isOverOpen = false;
+                }, 500);
+            }
+        })
+    </script>
+</body>
+
+</html>
